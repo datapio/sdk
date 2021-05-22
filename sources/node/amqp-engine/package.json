@@ -1,0 +1,45 @@
+{
+  "name": "@datapio/sdk-amqp-engine",
+  "version": "2.0.0",
+  "description": "AMQP Engine factory",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datapio/sdk.git",
+    "directory": "sources/node/amqp-engine"
+  },
+  "author": "Link Society <contact@link-society.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "lint": "eslint",
+    "build": "tsc -d",
+    "watch": "tsc -d --watch",
+    "test": "yarn run test:build && yarn run test:run",
+    "test:build": "tsc -d -p tsconfig.tests.json",
+    "test:run": "c8 mocha -r dist-tests/tests/mocks/index.js dist-tests/tests/**/*.spec.js",
+    "doc": "typedoc --out docs --theme ../../../assets/jsdoc-theme --readme README.md src/"
+  },
+  "dependencies": {
+    "amqplib": "^0.7.1",
+    "merge-options": "^3.0.4"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
+    "@types/amqplib": "^0.5.17",
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
+    "@types/mock-require": "^2.0.0",
+    "@types/sinon-chai": "^3.2.5",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "c8": "^7.7.2",
+    "chai": "^4.3.4",
+    "eslint": "^7.25.0",
+    "mocha": "^8.4.0",
+    "mock-require": "^3.0.3",
+    "sinon": "^10.0.0",
+    "sinon-chai": "^3.6.0",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.2.4"
+  }
+}

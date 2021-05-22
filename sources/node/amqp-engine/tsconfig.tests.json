@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist-tests",
+    "lib": ["dom", "es2020"],
+    "sourceMap": true
+  },
+  "include": ["./src/**/*.ts", "./tests/**/*.ts"],
+  "exclude": ["node_modules"]
+}
