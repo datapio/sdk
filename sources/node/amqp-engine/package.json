@@ -16,7 +16,7 @@
     "watch": "tsc -d --watch",
     "test": "yarn run test:build && yarn run test:run",
     "test:build": "tsc -d -p tsconfig.tests.json",
-    "test:run": "c8 mocha -r dist-tests/tests/mocks/index.js dist-tests/tests/**/*.spec.js",
+    "test:run": "c8 mocha dist-tests/tests/",
     "doc": "typedoc --out docs --theme ../../../assets/jsdoc-theme --readme README.md src/"
   },
   "dependencies": {

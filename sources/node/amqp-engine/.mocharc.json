@@ -1,0 +1,5 @@
+{
+  "recursive": true,
+  "require": "dist-tests/tests/mocks/index.js",
+  "extension": ["spec.js"]
+}
