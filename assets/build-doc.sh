@@ -2,8 +2,8 @@
 
 set -eux
 
-(cd sources/node/amqp-engine && yarn install && yarn doc)
-(cd sources/node/k8s-operator && yarn install && yarn doc)
+(cd sources/node/amqp-engine && npm install && npm run doc)
+(cd sources/node/k8s-operator && npm install && npm run doc)
 
 mkdir -p www/static/docs
 cp -Rv sources/node/amqp-engine/docs www/static/docs/amqp-engine
