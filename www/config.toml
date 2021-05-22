@@ -1,0 +1,35 @@
+baseURL = "https://sdk.datapio.co/"
+languageCode = "en-us"
+staticDir = ["static"]
+
+title = "Datapio SDK"
+
+[params]
+
+emoji = "&#128736;&#65039;"
+description = """
+The Datapio SDK provides a set of libraries to help you build tools for DevOps,
+Kubernetes, and other Cloud technologies.
+"""
+
+github = "https://github.com/datapio/sdk"
+
+[[params.menu]]
+
+name = "Datapio"
+url = "https://datapio.co/"
+
+[[params.menu]]
+
+name = "Kubirds"
+url = "https://kubirds.com"
+
+[[params.menu]]
+
+name = "klifter"
+url = "https://klifter.datapio.co/"
+
+[[params.menu]]
+
+name = "klander"
+url = "https://klander.datapio.co/"
