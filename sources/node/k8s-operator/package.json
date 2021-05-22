@@ -1,8 +1,8 @@
 {
   "private": false,
   "name": "@datapio/sdk-k8s-operator",
-  "version": "2.0.0",
-  "description": "AMQP Engine factory",
+  "version": "2.0.1",
+  "description": "Kubernetes Operator factory",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
