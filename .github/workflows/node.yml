@@ -1,0 +1,107 @@
+---
+name: Test, build and publish NodeJS SDK
+
+on: [push]
+
+jobs:
+  sdk-amqp-engine:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sources/node/amqp-engine
+
+    steps:
+      - name: checkout@scm
+        uses: actions/checkout@master
+
+      - name: setup@node
+        uses: actions/setup-node@master
+        with:
+          node-version: '14.x'
+          always-auth: true
+          registry-url: https://npm.pkg.github.com
+          scope: '@datapio'
+
+      - name: setup@yarn
+        run: npm install -g yarn
+
+      - name: install@yarn
+        run: yarn install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: lint@yarn
+        run: yarn run lint
+
+      - name: test@yarn
+        run: yarn run test
+
+      - name: build@yarn
+        run: yarn run build
+
+      - name: publish@yarn
+        if: github.ref == 'refs/heads/main'
+        run: /bin/sh ../../../.github/scripts/maybe-publish.sh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+  sdk-k8s-operator:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sources/node/k8s-operator
+
+    steps:
+      - name: checkout@scm
+        uses: actions/checkout@master
+
+      - name: setup@node
+        uses: actions/setup-node@master
+        with:
+          node-version: '14.x'
+          always-auth: true
+          registry-url: https://npm.pkg.github.com
+          scope: '@datapio'
+
+      - name: setup@yarn
+        run: npm install -g yarn
+
+      - name: install@yarn
+        run: yarn install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: lint@yarn
+        run: yarn run lint
+
+      - name: test@yarn
+        run: yarn run test
+
+      - name: build@yarn
+        run: yarn run build
+
+      - name: publish@yarn
+        if: github.ref == 'refs/heads/main'
+        run: /bin/sh ../../../.github/scripts/maybe-publish.sh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+  notify:
+    needs:
+      - sdk-amqp-engine
+      - sdk-k8s-operator
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v2
+      - name: notify@slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ env.WORKFLOW_CONCLUSION }}
+          username: CIBot
+          fields: repo,message,commit,author,ref,took
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()

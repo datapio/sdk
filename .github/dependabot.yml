@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/sources/node/k8s-operator"
+    schedule:
+      interval: "daily"
+    labels:
+      - k8s-operator
+    commit-message:
+      prefix: ':arrow_up: '
+      prefix-development: ':arrow_up: '
+  - package-ecosystem: "npm"
+    directory: "/sources/node/amqp-engine"
+    schedule:
+      interval: "daily"
+    labels:
+      - amqp-engine
+    commit-message:
+      prefix: ':arrow_up: '
+      prefix-development: ':arrow_up: '
