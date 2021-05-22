@@ -1,0 +1,9 @@
+type Annotation {
+  name: String!
+  value: String!
+}
+
+input AnnotationField {
+  name: String!
+  value: String!
+}

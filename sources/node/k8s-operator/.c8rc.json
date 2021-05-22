@@ -1,0 +1,10 @@
+{
+  "all": true,
+  "check-coverage": true,
+  "include": ["dist-tests/src/**/*.js"],
+  "exclude": [
+    "dist-tests/src/kube-interface/types.js",
+    "dist-tests/src/operator/types.js"
+  ],
+  "reporter": ["html", "text"]
+}
