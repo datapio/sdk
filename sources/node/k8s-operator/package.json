@@ -20,7 +20,7 @@
     "doc": "typedoc --out docs --theme ../../../assets/jsdoc-theme --readme README.md src/"
   },
   "dependencies": {
-    "@godaddy/terminus": "^4.7.1",
+    "@godaddy/terminus": "^4.8.0",
     "@kubernetes/client-node": "^0.14.0",
     "apollo-server-express": "^2.22.2",
     "cookie-parser": "^1.4.5",
