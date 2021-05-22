@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    {{ partial "metadata.html" . }}
+    {{ partial "css.html" . }}
+    {{ partial "scripts.html" . }}
+  </head>
+
+  <body class="has-navbar-fixed-top">
+    {{ partial "navbar.html" . }}
+
+    <div class="page-container">
+      <div class="page-wrapper">
+        <div class="mt-6"></div>
+        <div class="container">
+          <h1 class="title is-size-2 has-text-centered">&#128218; {{ partial "breadcrumbs.html" . }}</h1>
+
+          <hr />
+
+          <div class="columns is-centered is-multiline is-mobile is-hidden-print">
+            {{ range .Params.ApiReferences }}
+              <div class="column is-one-third px-6 py-5">
+                <div class="panel is-link is-flex is-flex-direction-column is-full-height">
+                  <a href="{{ .RelPermalink }}" class="panel-heading has-text-centered">
+                    {{ .Title }}
+                  </a>
+                  <div class="panel-block">
+                    <div class="container">
+                      <div class="tags is-justify-content-center">
+                        {{ range .Params.tags }}
+                          <span class="tag is-primary">
+                            {{ . }}
+                          </span>
+                        {{ end }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-block is-flex-auto has-text-justified">
+                    <div class="content">{{ .Description | markdownify }}</div>
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+
+          <div class="is-visible-print-only content">
+            {{ range .Pages }}
+              <p class="title is-size-4"><a href="{{ .Site.BaseURL }}/{{ .RelPermalink }}">{{ .Title }}</a></p>
+
+              <p>
+                {{ range .Params.tags }}
+                  <span class="tag is-primary">
+                    {{ . }}
+                  </span>
+                {{ end }}
+              </p>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer mt-6">
+        <p class="has-text-centered">
+          Documentation content is released under the term of the
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>
+          license.
+        </p>
+      </footer>
+    </div>
+
+    <script type="application/javascript">
+      $(function() {
+        $('.navbar-burger').on('click', () => {
+          if ($('.navbar-menu').hasClass('is-active')) {
+            $('.navbar-menu').removeClass('is-active')
+          }
+          else {
+            $('.navbar-menu').addClass('is-active')
+          }
+        })
+      })
+    </script>
+
+    {{ block "scripts" . }}
+    {{ end }}
+  </body>
+</html>
