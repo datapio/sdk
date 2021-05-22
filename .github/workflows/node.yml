@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '14.x'
           always-auth: true
-          registry-url: https://npm.pkg.github.com
+          registry-url: 'https://registry.npmjs.org'
           scope: '@datapio'
 
       - name: setup@yarn
@@ -28,7 +28,7 @@ jobs:
       - name: install@yarn
         run: yarn install
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLIC_NPM_AUTH_TOKEN }}
 
       - name: lint@yarn
         run: yarn run lint
@@ -43,7 +43,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: /bin/sh ../../../.github/scripts/maybe-publish.sh
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLIC_NPM_AUTH_TOKEN }}
 
   sdk-k8s-operator:
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
         with:
           node-version: '14.x'
           always-auth: true
-          registry-url: https://npm.pkg.github.com
+          registry-url: 'https://registry.npmjs.org'
           scope: '@datapio'
 
       - name: setup@yarn
@@ -69,7 +69,7 @@ jobs:
       - name: install@yarn
         run: yarn install
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLIC_NPM_AUTH_TOKEN }}
 
       - name: lint@yarn
         run: yarn run lint
@@ -84,7 +84,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: /bin/sh ../../../.github/scripts/maybe-publish.sh
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLIC_NPM_AUTH_TOKEN }}
 
   notify:
     needs:

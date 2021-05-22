@@ -5,9 +5,6 @@ exchanges, queues, producers and consumers.
 
 ### Installation
 
-This project is distributed via
-[Github Packages' NPM registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry):
-
 ```bash
 $ npm install @datapio/sdk-amqp-engine
 ```
