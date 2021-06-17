@@ -21,7 +21,7 @@
     "doc": "typedoc --out docs --theme ../../../assets/jsdoc-theme --readme README.md src/"
   },
   "dependencies": {
-    "amqplib": "^0.7.1",
+    "amqplib": "^0.8.0",
     "merge-options": "^3.0.4"
   },
   "devDependencies": {
